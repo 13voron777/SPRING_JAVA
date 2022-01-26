@@ -5,7 +5,7 @@ import LAB1.interfaces.Tyre;
 public class Rosava implements Tyre {
     public void twist() {
         System.out.println("*****************************");
-        System.out.println("Tyre Rosava began to teist");
+        System.out.println("Tyre Rosava began to twist");
         System.out.println("*****************************");
     }
 
