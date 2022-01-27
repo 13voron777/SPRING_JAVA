@@ -5,27 +5,28 @@
 
     <import resource="logger.xml" />
 
-    <!--<context:annotation-config/>-->
-
-
-    <bean id="client1" class="LAB2.Client"/>
-    <bean id="client2" class="LAB2.Client"/>
-    <bean id="client3" class="LAB2.Client"/>
-    <bean id="person4" class="com.itvdn.domain.implementation.Abonent" name="Peter"/>
-
-    <alias name="Peter" alias="Petro" />
+    <bean id="client1" class="LAB2.Client">
+        <property name="name" value="Wiktor"/>
+        <property name="sum" value="15000.0"/>
+    </bean>
+    <bean id="client2" class="LAB2.Client">
+        <property name="name" value="Andrey"/>
+        <property name="sum" value="10000.0"/>
+    </bean>
+    <bean id="client3" class="LAB2.Client">
+        <property name="name" value="John"/>
+        <property name="sum" value="800.5"/>
+    </bean>
 
     <util:list id="clientsList" scope="singleton" list-class="java.util.ArrayList">
         <ref bean="client1"/>
-        <ref bean="client1"/>
-        <ref bean="client1"/>
+        <ref bean="client2"/>
+        <ref bean="client3"/>
     </util:list>
 
     <bean id="bankRaiff" class="LAB2.Bank">
         <property name="clients" ref="clientsList"/>
-        <property name="LOG" ref="labLogger2" />
+        <property name="name" value="Raiffeisen"/>
+        <property name="LOG" ref="lab2Logger" />
     </bean>
-
-    <!--    по умолчанию используется ранняя инициализация   -->
-    <!--    <bean id="oldPhone" class="com.itvdn.domain.implementation.Calculate" lazy-init="false"/>-->
 </beans>
