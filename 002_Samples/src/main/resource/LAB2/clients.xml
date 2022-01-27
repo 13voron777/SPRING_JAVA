@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="logger.xml" />
+
+    <!--<context:annotation-config/>-->
+
+
+    <bean id="client1" class="LAB2.Client"/>
+    <bean id="client2" class="LAB2.Client"/>
+    <bean id="client3" class="LAB2.Client"/>
+    <bean id="person4" class="com.itvdn.domain.implementation.Abonent" name="Peter"/>
+
+    <alias name="Peter" alias="Petro" />
+
+    <util:list id="clientsList" scope="singleton" list-class="java.util.ArrayList">
+        <ref bean="client1"/>
+        <ref bean="client1"/>
+        <ref bean="client1"/>
+    </util:list>
+
+    <bean id="bankRaiff" class="LAB2.Bank">
+        <property name="clients" ref="clientsList"/>
+        <property name="LOG" ref="labLogger2" />
+    </bean>
+
+    <!--    по умолчанию используется ранняя инициализация   -->
+    <!--    <bean id="oldPhone" class="com.itvdn.domain.implementation.Calculate" lazy-init="false"/>-->
+</beans>
