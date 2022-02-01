@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="logger.xml" />
+
+    <bean id="client1" class="LAB2.Client">
+        <property name="name" value="Wiktor"/>
+        <property name="sum" value="15000.0"/>
+    </bean>
+    <bean id="client2" class="LAB2.Client">
+        <property name="name" value="Andrey"/>
+        <property name="sum" value="10000.0"/>
+    </bean>
+    <bean id="client3" class="LAB2.Client">
+        <property name="name" value="John"/>
+        <property name="sum" value="800.5"/>
+    </bean>
+
+    <util:list id="clientsList" scope="singleton" list-class="java.util.ArrayList">
+        <ref bean="client1"/>
+        <ref bean="client2"/>
+        <ref bean="client3"/>
+    </util:list>
+
+    <bean id="bankRaiff" class="LAB2.Bank">
+        <property name="clients" ref="clientsList"/>
+        <property name="name" value="Raiffeisen"/>
+        <property name="LOG" ref="lab2Logger" />
+    </bean>
+</beans>
